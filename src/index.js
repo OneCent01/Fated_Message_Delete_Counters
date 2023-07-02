@@ -5,6 +5,7 @@ import {
   FATED_USER_ID,
   ZULII_USER_ID,
 } from './helpers/consts.js';
+import {loadDeleteCounters} from './helpers/deleteCounters.js';
 
 document.body.innerHTML = ROOT_HTML_TEMPLATE;
 
@@ -32,7 +33,7 @@ window.addEventListener('onWidgetLoad', async event => {
 
   // first get the streamer's access token and wait for it to load
   await loadStreamerToken(sessionData);
-  console.log('sessionData: ', sessionData)
+  await loadDeleteCounters(sessionData);
 });
 
 window.addEventListener('onEventReceived', event => {
